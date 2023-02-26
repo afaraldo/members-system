@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import ProductForm from '../../components/products/ProductForm';
-import ProductList from '../../components/products/ProductList';
+import ArtistList from '../../components/artists/ArtistList';
 import axios from 'axios';
+import { redirect } from "react-router-dom";
 
 export default () => {
-    const [products, setProducts] = useState([]);
+    const [artists, setArtists] = useState([]);
     const [loaded, setLoaded] = useState(false);
     
     useEffect(()=>{
-        axios.get('http://localhost:8000/api/products')
+        axios.get('http://localhost:8000/api/artists')
             .then(res=>{
-                setProducts(res.data);
+                setArtists(res.data);
                 setLoaded(true);
             });
     },[])
 
-    const removeFromDom = productId => {
-        setProducts(products.filter(product => product._id !== productId));
+    const removeArtist = artistId => {
+        axios.delete('http://localhost:8000/api/artists/' + artistId)
+            .then(res => {
+                setArtists(artists.filter(artist => artist._id !== artistId));
+            });
+            redirect('/artists');
     }
 
     return (
-        <div>
-            <ProductForm/>
-            <hr/>
-            {loaded && <ProductList products={products} removeFromDom={removeFromDom}/>}
-        </div>
+        <>
+            {loaded && <ArtistList artists={artists} removeFromDom={removeArtist}/>}
+        </>
     )
 }
