@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
+
 const ProjectSchema = new mongoose.Schema({
     name: { 
         type: String,
@@ -21,5 +23,6 @@ const ProjectSchema = new mongoose.Schema({
         default: "new"
     }
 }, { timestamps: true });
+ProjectSchema.plugin(uniqueValidator);
 
 module.exports.Project = mongoose.model('Project', ProjectSchema);
