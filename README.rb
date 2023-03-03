@@ -4,11 +4,15 @@ Author: Adrian Aguero
 
 Instalacion
 
+database:
+mongodb installed
+
 server:
 cd kanbanboard
 npm install
 npm start
 
+client:
 cd kanbanboard
 cd client
 npm install
@@ -28,3 +32,17 @@ Para lograr el cinturón negro, se realizo:
 * Ordenar los proyectos por "Fecha de vencimiento". HECHO
 * Indica si el proyecto está vencido (la fecha de vencimiento es anterior a la de hoy) HECHO pero sin usar moments.js
 * Asegurarse de que el proyecto sea único al agregarlo a la base de datos. HECHO
+
+Guía/Requisitos generales del proyecto:
+Login y Registro con validaciones
+El usuario puede [crear] objeto a la base de datos
+El usuario puede [leer] objetos creados de la base de datos
+El usuario puede hacer [me gusta], añadir a [favoritos], responder, etc.
+El usuario puede [editar] el perfil o los datos publicados/creados
+El usuario puede [eliminar] el perfil o los datos publicados/creados
+Uso del motor Node/Express y React en el lado del cliente.
+La app incluye rutas protegidas (el usuario debe tener la sesión activa para acceder a las rutas de la app)
+La aplicación incluye contenido estático (CSS, imágenes, videos, audio, etc)
+Los datos creados deben estar validados (no deben existir datos duplicados, la creación de información debe incluir contenido, etc)
+La app es responsive
+Sugiero que intenten incluir un mecanismo de chat en su app. No es un requisito obligatorio, pero sería genial incluir esta característica en los proyectos.
