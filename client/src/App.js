@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import MainProject from './views/projects/Main';
-import CreateProject from './views/projects/Create';
+import MainPerson from './views/people/Main';
+import CreatePerson from './views/people/Create';
 
 function App() {
   return (
@@ -10,8 +10,9 @@ function App() {
       <div className="container">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainProject/>}/>
-            <Route path="/projects/new" element={<CreateProject/>}/>
+            <Route path="/" element={<MainPerson/>}/>
+            <Route path="/people/:person_id" element={<MainPerson/>}/>
+            <Route path="/people/new" element={<CreatePerson/>}/>
           </Routes>
         </BrowserRouter>
       </div>

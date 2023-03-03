@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ProjectForm from '../../components/projects/ProjectForm';
+import PersonForm from '../../components/people/PersonForm';
 import { useNavigate } from "react-router-dom";
 
 export default props => {
     const navigate = useNavigate();
     const [errors, setErrors] = useState([]);
     
-    const createProject = project => {
-        axios.post('http://localhost:8000/api/projects', project)
+    const createPerson = person => {
+        axios.post('http://localhost:8000/api/people', person)
             .then(res=>{
                 console.log(res);
                 navigate("/");
@@ -27,7 +27,12 @@ export default props => {
 
     return (
         <div>
-            <ProjectForm onSubmitProp={createProject} initialName="" errors={errors}/>
+            <PersonForm onSubmitProp={createPerson}
+                initialFirstName=""
+                initialLastName=""
+                initialDocument=""
+                initialPhoneNumber=""
+                errors={errors}/>
         </div>
     )
 }

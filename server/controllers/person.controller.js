@@ -7,12 +7,12 @@ module.exports.index = (request, response) => {
 }
 
 module.exports.createPerson = (request, response) => {
-    const { firstName, lastName, document, phone_number } = request.body;
+    const { firstName, lastName, document, phoneNumber } = request.body;
     Person.create({
         firstName,
         lastName,
         document,
-        phone_number
+        phoneNumber
     })
         .then(Person => response.json(Person))
         .catch(err => {
