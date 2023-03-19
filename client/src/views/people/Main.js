@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 export default () => {
     const [people, setPeople] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [person, setPerson] = useState();
     const navigate = useNavigate();
 
     useEffect(()=>{

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
 var uniqueValidator = require('mongoose-unique-validator');
 
 const PersonSchema = new mongoose.Schema({
@@ -32,7 +34,8 @@ const PersonSchema = new mongoose.Schema({
             "PhoneNumber is required"
         ],
         unique: true
-    }
+    },
+    debts: [{ type: Schema.Types.ObjectId, ref: 'Debt' }]
 }, { timestamps: true });
 PersonSchema.plugin(uniqueValidator);
 
