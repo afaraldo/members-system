@@ -28,7 +28,7 @@ module.exports.createPerson = (request, response) => {
             console.log(person)
             response.json(people)
         })
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
     })
     
 }
@@ -36,13 +36,13 @@ module.exports.createPerson = (request, response) => {
 module.exports.getAllPeople = (request, response) => {
     Person.find({}).sort( { document: +1 } ).populate("debts")
         .then(people => response.json(people))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
 }
 
 module.exports.getPerson = (request, response) => {
     Person.findOne({_id: request.params.id}).populate("debts")
         .then(person => response.json(person))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
 }
 
 module.exports.updatePerson = (request, response) => {
@@ -55,5 +55,5 @@ module.exports.updatePerson = (request, response) => {
 module.exports.deletePerson = (request, response) => {
     Person.deleteOne({ _id: request.params.id })
         .then(deleteConfirmation => response.json(deleteConfirmation))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
 }

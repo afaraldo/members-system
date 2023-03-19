@@ -11,7 +11,7 @@ module.exports.getAllDebts = (request, response) => {
     console.log(request)
     Debt.find({personId: request.params.person_id}).sort( { document: +1 } )
         .then(people => response.json(people))
-        .catch(err => response.json(err))
+        .catch(err => response.status(400).json(err))
 }
 
 module.exports.createDebts = (request, response) => {
@@ -29,7 +29,7 @@ module.exports.createDebts = (request, response) => {
         })
         Debt.create(debts)
             .then(debts => response.json(debts))
-            .catch(err => response.json(err))
+            .catch(err => response.status(400).json(err))
 }
 
 module.exports.updateDebt = (request, response) => {

@@ -10,10 +10,11 @@ function CustomNavBar() {
 
   const logout = (e) => {
     e.preventDefault()
+    removeCookie('user')
     axios.post('http://localhost:8000/api/users/logout', { withCredentials: true, credentials: 'include' })
         .then(response=>{
             console.log(response);
-            removeCookie('user')
+            
             navigate("login");
         })
         .catch(err=>{

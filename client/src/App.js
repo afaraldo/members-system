@@ -10,9 +10,14 @@ import CustomNavBar from './components/common/CustomNavBar'
 function App() {
 
   const ProtectedRoute = ({ user, redirectPath = '/login' }) => {
-    const [cookies, setCookie] = useCookies(['user']);
-  
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);  
+    const [userTokenCookie, setUserTokenCookie, removeUserTokenCookie] = useCookies(['userToken']);  
+    if (!userTokenCookie['userToken']) {
+      removeCookie('userToken')
+    }
+
     if (!cookies['user']) {
+      
       return <Navigate to={redirectPath} replace />;
     }
   
