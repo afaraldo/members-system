@@ -29,7 +29,7 @@ function CustomNavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+            <NavDropdown title="Opciones" id="basic-nav-dropdown">
               <NavDropdown.Item href="#" onClick={logout}>
                 Cerrar Sesion
               </NavDropdown.Item>

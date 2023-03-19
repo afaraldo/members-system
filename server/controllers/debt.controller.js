@@ -30,7 +30,18 @@ module.exports.createDebts = (request, response) => {
         Debt.create(debts)
             .then(debts => response.json(debts))
             .catch(err => response.json(err))
-    
+}
+
+module.exports.updateDebt = (request, response) => {
+    console.log(request.body);
+    console.log(request.params.debtId);
+    Debt.findOneAndUpdate({_id: request.params.debtId}, request.body, {new:true})
+        .then(updatedDebt => {
+            Person.findOne({_id: request.params.personId}).sort( { document: +1 } ).populate("debts").then(person => {
+                response.json(person)
+            })
+        })
+        .catch(err => response.status(400).json(err));
 }
 
 

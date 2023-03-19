@@ -13,6 +13,10 @@ const DebtSchema = new mongoose.Schema({
         ],
         minlength: 3
     },
+    state: { 
+        type: String,
+        default: 'Pendiente'
+    },
     amount: { 
         type: Number,
         required: [

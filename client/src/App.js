@@ -16,13 +16,15 @@ function App() {
       return <Navigate to={redirectPath} replace />;
     }
   
-    return <Outlet />;
+    return <>
+      <CustomNavBar/>
+      <Outlet />;
+    </>
   };
 
   return (
     <div className="App">
         <BrowserRouter>
-          <CustomNavBar/>
           <div className="container">  
             <Routes>
               <Route element={<ProtectedRoute />}>

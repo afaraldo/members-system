@@ -38,21 +38,7 @@ export default props => {
                                 </Link>
                             </td>
                             <td>
-                                <Link to={"/people/" + person._id}>
-                                    {person.lastName}
-                                </Link>
-                            </td>
-                            <td>
-                                <button className="btn btn-secondary mr-1"
-                                        onClick={(e)=> updateFromDom(person, {status: 'pending'})}>
-                                    Edit
-                                </button>
-                                    
-                                <button className="btn btn-info"
-                                        onClick={(e)=> createDebts(person._id)}
-                                        disabled={person.debts.length == 0 ? false : true }>
-                                    Create Coutas
-                                </button>
+                                {person.lastName}
                             </td>
                         </tr>
                     )}
