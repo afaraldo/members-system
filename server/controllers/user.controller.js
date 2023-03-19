@@ -48,12 +48,12 @@ module.exports = {
                     }
                 })
                 .catch(err => {
-                    response.json({ message: "invalid login attempt" })
+                    response.status(404).json({ message: "invalid login attempt" })
                     console.log(err);
                 });
         })
         .catch(err => {
-            response.json({ message: "Invalid Email or Password" });
+            response.status(404).json({ message: "Invalid Email or Password" });
             console.log({ message: "Invalid Email or Password" })
         })
     },
